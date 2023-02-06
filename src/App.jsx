@@ -14,13 +14,21 @@ function App() {
     type: ""
   })
 
+  const handleChange = (e) => {
+    setName(e.target.value)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
   return (
     <section className="section-center">
-      <form className="grocery-form">
+      <form onSubmit={handleSubmit} className="grocery-form">
         {alert.show && <Alert/>}
         <h3>grocery bud</h3>
         <div className="form-control">
-          <input type="text"/>
+          <input type="text" className="grocery" placeholder="e.g eggs" value={name} onChange={handleChange}/>
           <button type="submit" className="submit-btn">
             {isEditing ? "edit" : "submit"}
           </button>
