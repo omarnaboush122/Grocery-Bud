@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Alert from "./Alert";
 import List from "./List";
 import { nanoid } from "nanoid";
@@ -69,6 +69,9 @@ function App() {
     setName(specificItem.title);
   };
 
+  useEffect(()=> {
+    localStorage.setItem("list",JSON.stringify(list));
+  },[list])
   return (
     <section className="section-center">
       <form onSubmit={handleSubmit} className="grocery-form">
