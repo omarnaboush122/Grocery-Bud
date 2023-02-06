@@ -29,12 +29,11 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name) {
-      showAlert(true,"danger","please enter value");
-
+      showAlert(true, "danger", "please enter value");
     } else if (name && isEditing) {
       // deal with edit
     } else {
-      showAlert(true,"success","added")
+      showAlert(true, "success", "item added to the list");
       const newItem = {
         id: nanoid(),
         title: name,
@@ -44,6 +43,10 @@ function App() {
       setName("");
     }
   };
+
+  const clearList = () => {
+    setList([]);
+  }
 
   return (
     <section className="section-center">
@@ -66,7 +69,7 @@ function App() {
       {list.length > 0 && (
         <div className="grocery-container">
           <List items={list} />
-          <button className="clear-btn">clear items</button>
+          <button className="clear-btn" onClick={clearList}>clear items</button>
         </div>
       )}
     </section>
