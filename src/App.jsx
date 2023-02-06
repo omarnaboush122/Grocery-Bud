@@ -5,7 +5,9 @@ import { nanoid } from "nanoid";
 
 function App() {
   const [name, setName] = useState("");
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(
+    JSON.parse(localStorage.getItem("list")) || []
+  );
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({
@@ -40,7 +42,6 @@ function App() {
       setEditID(null);
       setIsEditing(false);
       showAlert(true, "success", "value change");
-
     } else {
       showAlert(true, "success", "item added to the list");
       const newItem = {
@@ -69,9 +70,9 @@ function App() {
     setName(specificItem.title);
   };
 
-  useEffect(()=> {
-    localStorage.setItem("list",JSON.stringify(list));
-  },[list])
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(list));
+  }, [list]);
   return (
     <section className="section-center">
       <form onSubmit={handleSubmit} className="grocery-form">
