@@ -1,11 +1,9 @@
 
 
+import { FaEdit, FaTrash } from 'react-icons/fa';
+
 const List = () => {
-  return (
-    <div>
-      list
-    </div>
-  );
+  return <h2>list component</h2>
 }
 
-export default List;
+export default List
