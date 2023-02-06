@@ -29,10 +29,12 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name) {
+      showAlert(true,"danger","please enter value");
+
     } else if (name && isEditing) {
       // deal with edit
     } else {
-      // show alert
+      showAlert(true,"success","added")
       const newItem = {
         id: nanoid(),
         title: name,
@@ -46,7 +48,7 @@ function App() {
   return (
     <section className="section-center">
       <form onSubmit={handleSubmit} className="grocery-form">
-        {alert.show && <Alert {...alert} />}
+        {alert.show && <Alert {...alert} removeAlert={showAlert} />}
         <h3>grocery bud</h3>
         <div className="form-control">
           <input
