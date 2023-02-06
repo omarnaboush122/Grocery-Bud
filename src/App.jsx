@@ -31,13 +31,16 @@ function App() {
     if (!name) {
       showAlert(true, "danger", "please enter value");
     } else if (name && isEditing) {
-      showAlert(true, "success", "item edited");
       setList(
         list.map((item) => {
           return editID === item.id ? { ...item, title: name } : item;
         })
       );
       setName("");
+      setEditID(null);
+      setIsEditing(false);
+      showAlert(true, "success", "value change");
+
     } else {
       showAlert(true, "success", "item added to the list");
       const newItem = {
