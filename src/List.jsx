@@ -20,7 +20,7 @@ const List = ({ items }) => {
           </article>
         );
       })}
-      
+
     </div>
   );
 };
